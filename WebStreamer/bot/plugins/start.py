@@ -53,11 +53,10 @@ async def start(b, m):
                     disable_web_page_preview=True)
                 return
         await m.reply_text(
-            text='🙋 Hey Bruh!!\nI am Instant Telegram File to Link Generator Bot.\n\nSend me any file & see the magic!',
+            text='<b>Hai {update.from_user.mention}</b>\n\nIm Simple Telegram File to Instant Permenant Link Generator Bot😜\nAdd me in your channel as admin with edit permissions.',
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton('🔊 Channel', url='https://t.me/UvinduBro'), InlineKeyboardButton('👥  Support Group', url='https://t.me/UvinduBr')],
-                    [InlineKeyboardButton('🔥 Developer', url='https://t.me/Uvindu_Bro')]
+                    [InlineKeyboardButton('Channel', url='https://t.me/vkprojects'), InlineKeyboardButton('Support', url='https://t.me/vkp_bots')]
                 ]
             ),
             disable_web_page_preview=True
@@ -82,10 +81,6 @@ async def start(b, m):
                         [
                             [
                                 InlineKeyboardButton("🤖 Join Updates Channel", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
-                            ],
-                            [
-                                InlineKeyboardButton("🔄 Refresh / Try Again",
-                                                     url=f"https://t.me/AH_File2Link_Bot?start=UvinduBr_{usr_cmd}")
                             ]
                         ]
                     ),
@@ -95,7 +90,7 @@ async def start(b, m):
             except Exception:
                 await b.send_message(
                     chat_id=m.chat.id,
-                    text="Something went Wrong. Contact my [👥 Support Group](https://t.me/UvinduBr).",
+                    text="Something went Wrong. Contact my [Support Group](https://t.me/vkp_bots).",
                     parse_mode="markdown",
                     disable_web_page_preview=True)
                 return
@@ -123,7 +118,7 @@ async def start(b, m):
                                      Var.PORT,
                                      get_msg.message_id)
 
-        msg_text = "Bruh! 😁\nYour Link Generated! 🤓\n\n📂 **File Name:** `{}`\n**File Size:** `{}`\n\n📥 **Download Link:** `{}`"
+        msg_text = "Your Link Generated!\n\n**File Name:** `{}`\n**File Size:** `{}`\n\n**Download Link:** `{}`"
         await m.reply_text(
             text=msg_text.format(file_name, file_size, stream_link),
             parse_mode="Markdown",
@@ -145,7 +140,7 @@ async def help_handler(bot, message):
             if user.status == "kicked":
                 await bot.send_message(
                     chat_id=message.chat.id,
-                    text="Sorry Sir, You are Banned to use me. Contact my [👥 Support Group](https://t.me/UvinduBr).",
+                    text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/vkp_bots).",
                     parse_mode="markdown",
                     disable_web_page_preview=True
                 )
@@ -167,7 +162,7 @@ async def help_handler(bot, message):
         except Exception:
             await bot.send_message(
                 chat_id=message.chat.id,
-                text="Something went Wrong. Contact my [👥 Support Group](https://t.me/UvinduBr).",
+                text="Something went Wrong. Contact my [Support Group](https://t.me/vkp_bots).",
                 parse_mode="markdown",
                 disable_web_page_preview=True)
             return
@@ -177,8 +172,7 @@ async def help_handler(bot, message):
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
             [
-                [InlineKeyboardButton("👥 Support Group", url="https://t.me/UvinduBr"), InlineKeyboardButton("🔊 Channel", url="https://t.me/UvinduBro")],
-                [InlineKeyboardButton("🔥 Developer", url="https://t.me/Uvindu_Bro")]
+                [InlineKeyboardButton("Channel", url="https://t.me/vkprojects"), InlineKeyboardButton("Support", url="https://t.me/vkp_bots")]
             ]
         )
     )
