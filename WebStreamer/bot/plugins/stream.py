@@ -25,7 +25,7 @@ async def private_receive_handler(c: Client, m: Message):
             if user.status == "kicked":
                 await c.send_message(
                     chat_id=m.chat.id,
-                    text="Sorry Sir, You are Banned to use me. Contact my [👥 Support Group](https://t.me/UvinduBr).",
+                    text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/vkp_bots).",
                     parse_mode="markdown",
                     disable_web_page_preview=True
                 )
@@ -47,7 +47,7 @@ async def private_receive_handler(c: Client, m: Message):
         except Exception:
             await c.send_message(
                 chat_id=m.chat.id,
-                text="Something went Wrong. Contact my [👥 Support Group](https://t.me/UvinduBr).",
+                text="Something went Wrong. Contact my [Support Group](https://t.me/vkp_bots).",
                 parse_mode="markdown",
                 disable_web_page_preview=True)
             return
@@ -73,7 +73,7 @@ async def private_receive_handler(c: Client, m: Message):
         elif m.audio:
             file_name = f"{m.audio.file_name}"
 
-        msg_text = "Bruh! 😁\nYour Link Generated! 🤓\n\n📂 **File Name:** `{}`\n**File Size:** `{}`\n\n📥 **Download Link:** `{}`"
+        msg_text = "Your Link Generated!\n\n**File Name:** `{}`\n**File Size:** `{}`\n\n**Download Link:** `{}`"
         await log_msg.reply_text(text=f"Requested by [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**User ID:** `{m.from_user.id}`\n**Download Link:** {stream_link}", disable_web_page_preview=True, parse_mode="Markdown", quote=True)
         await m.reply_text(
             text=msg_text.format(file_name, file_size, stream_link),
@@ -103,7 +103,7 @@ async def channel_receive_handler(bot, broadcast):
             message_id=broadcast.message_id,
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton("Get Direct Download Link", url=f"https://t.me/UBFiletoLinkBot?start=UvinduBro__{str(log_msg.message_id)}")]
+                    [InlineKeyboardButton("Get Direct Download Link", url=f"https://t.me/FiletoLink_VkBot?start=UvinduBro__{str(log_msg.message_id)}")]
                 ]
             )
         )
