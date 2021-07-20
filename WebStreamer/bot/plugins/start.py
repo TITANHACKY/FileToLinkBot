@@ -1,5 +1,6 @@
 # (c) @EverythingSuckz | @AbirHasan2005
 
+import pyrogram
 from WebStreamer.bot import StreamBot
 from WebStreamer.vars import Var
 from WebStreamer.utils.human_readable import humanbytes
