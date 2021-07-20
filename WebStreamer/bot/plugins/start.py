@@ -53,7 +53,7 @@ async def start(b, m):
                     disable_web_page_preview=True)
                 return
         await m.reply_text(
-            text='<b>Hai [{m.from_user.first_name}](tg://user?id={m.from_user.id})</b>\n\nIm Simple Telegram File to Instant Permenant Link Generator Bot😜\nAdd me in your channel as admin with edit permissions.',
+            text='<b>Hai {m.from_user.mention},</b>\n\nIm Simple Telegram File to Instant Permenant Link Generator Bot😜\nAdd me in your channel as admin with edit permissions.',
             reply_markup=InlineKeyboardMarkup(
                 [
                     [InlineKeyboardButton('Channel', url='https://t.me/vkprojects'), InlineKeyboardButton('Support', url='https://t.me/vkp_bots')]
