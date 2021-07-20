@@ -54,7 +54,7 @@ async def start(b, m):
                     disable_web_page_preview=True)
                 return
         await m.reply_text(
-            text='<b>Hey There,</b>\n\nIm Simple Telegram File to Instant Permenant Link Generator Bot😜\n\nI Supports Channels Too.Add me in your channel as admin with edit permissions.',
+            text='<b>Hey There,</b>\n\nIm Simple Telegram File to Instant Permenant Link Generator Bot\n\nI Supports Channels Too.\n\nAdd me in your channel as admin with edit permissions.',
             reply_markup=InlineKeyboardMarkup(
                 [
                     [InlineKeyboardButton('Channel', url='https://t.me/vkprojects'), InlineKeyboardButton('Support', url='https://t.me/vkp_bots')]
@@ -69,7 +69,7 @@ async def start(b, m):
                 if user.status == "kicked":
                     await b.send_message(
                         chat_id=m.chat.id,
-                        text="Sorry Sir, You are Banned to use me. Contact my [👥 Support Group](https://t.me/UvinduBr).",
+                        text="Sorry Sir, You are Banned to use me. Contact my [👥 Support Group](https://t.me/vkp_bots).",
                         parse_mode="markdown",
                         disable_web_page_preview=True
                     )
