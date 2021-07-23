@@ -177,3 +177,23 @@ async def help_handler(bot, message):
             ]
         )
     )
+
+
+@StreamBot.on_message(filters.command('about') & filters.private & ~filters.edited)
+def about(b, m):
+    bot.send_message(
+        chat_id=update.chat.id,
+        text=ABOUT_ME,
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Report Bug 🐞", url="https://t.me/VkP_BOTS")]]),
+        parse_mode="html",
+        disable_web_page_preview=True,
+        reply_to_message_id=update.message_id
+    )
+
+    ABOUT_ME = """ <b>Creator:</b> <a href="https://t.me/VivekTVP">Vivek</a>
+<b>Credits:</b> Dan for his awesome pyrogram library 🔥
+<b>Library:</b> <a href="https://docs.pyrogram.org/">Pyrogram 1.1.13</a>
+<b>Updates:</b> <a href="https://t.me/VkProjects">vk projects</a>
+<b>Server:</b> <a href="https://heroku.com">Heroku</a>
+
+<b><u>NB:</u></b> EveryOne Can Use Me.So Don't Worry🤗"""
