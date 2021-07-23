@@ -180,7 +180,7 @@ async def help_handler(bot, message):
 
 
 @StreamBot.on_message(filters.command('about') & filters.private & ~filters.edited)
-async def about_handler(bot, message):
+async def about_handler(b, m):
     if not await db.is_user_exist(message.from_user.id):
         await db.add_user(message.from_user.id)
         await bot.send_message(
