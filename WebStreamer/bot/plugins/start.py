@@ -54,7 +54,7 @@ async def start(b, m):
                     disable_web_page_preview=True)
                 return
         await m.reply_text(
-            text='<b>Hey There,</b>\n\nIm Simple Telegram File to Instant Permenant Link Generator Bot\n\nI Supports Channels Too.\n\nAdd me in your channel as admin with edit permissions.',
+            text='<b>Hey There,</b>\n\n<i>Im Simple Telegram File to Instant Permenant Link Generator Bot</i>\n\n<i>I Supports Channels Too.</i>\n\n<i>Add me in your channel as admin with edit permissions.</i>\n\n<b>You Must Join On My Channl To Use Me<b>',
             reply_markup=InlineKeyboardMarkup(
                 [
                     [InlineKeyboardButton('Channel', url='https://t.me/vkprojects'), InlineKeyboardButton('Support', url='https://t.me/vkp_bots')]
@@ -172,15 +172,15 @@ async def help_handler(bot, message):
         parse_mode="Markdown",
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
-            [
-                [InlineKeyboardButton("Channel", url="https://t.me/vkprojects"), InlineKeyboardButton("Support", url="https://t.me/vkp_bots")]
-            ]
-        )
-    )
+                [
+                    [InlineKeyboardButton('Bots Channel', url='https://t.me/Vkprojects'), InlineKeyboardButton('Support Group', url='https://t.me/VKP_BOTS')],
+                    [InlineKeyboardButton('Developer', url='https://t.me/AboutNote')]
+                ]
+            )
 
 
 @StreamBot.on_message(filters.command('about') & filters.private & ~filters.edited)
-def about(b, m):
+async def about(b, m):
     bot.send_message(
         chat_id=update.chat.id,
         text=ABOUT_ME,
