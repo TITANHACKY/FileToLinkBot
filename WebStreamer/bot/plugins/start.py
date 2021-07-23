@@ -175,5 +175,6 @@ async def help_handler(bot, message):
         reply_markup=InlineKeyboardMarkup(
                 [
                     [InlineKeyboardButton('Bots Channel', url='https://t.me/Vkprojects'), InlineKeyboardButton('Support Group', url='https://t.me/VKP_BOTS')]
-                ]
-            ),
+            ]
+        )
+    )
