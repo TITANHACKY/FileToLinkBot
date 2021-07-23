@@ -181,7 +181,7 @@ async def help_handler(bot, message):
 
 @StreamBot.on_message(filters.command('about') & filters.private & ~filters.edited)
 async def about(bot, message):
-    bot.send_message(
+    await update.reply_text(
         chat_id=update.chat.id,
         text=ABOUT_ME,
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Report Bug 🐞", url="https://t.me/VkP_BOTS")]]),
