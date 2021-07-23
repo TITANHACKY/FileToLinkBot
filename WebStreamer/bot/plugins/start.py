@@ -57,7 +57,8 @@ async def start(b, m):
             text='<b>Hey There,</b>\n\n<i>Im Simple Telegram File to Instant Permenant Link Generator Bot</i>\n\n<i>I Supports Channels Too.</i>\n\n<i>Add me in your channel as admin with edit permissions.</i>\n\n<b>You Must Join On My Channl To Use Me<b>',
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton('Channel', url='https://t.me/vkprojects'), InlineKeyboardButton('Support', url='https://t.me/vkp_bots')]
+                    [InlineKeyboardButton('Bots Channel', url='https://t.me/Vkprojects'), InlineKeyboardButton('Support Group', url='https://t.me/VKP_BOTS')],
+                    [InlineKeyboardButton('Developer', url='https://t.me/AboutNote')]
                 ]
             ),
             disable_web_page_preview=True
@@ -173,27 +174,59 @@ async def help_handler(bot, message):
         disable_web_page_preview=True,
         reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton('Bots Channel', url='https://t.me/Vkprojects'), InlineKeyboardButton('Support Group', url='https://t.me/VKP_BOTS')],
-                    [InlineKeyboardButton('Developer', url='https://t.me/AboutNote')]
+                    [InlineKeyboardButton('Bots Channel', url='https://t.me/Vkprojects'), InlineKeyboardButton('Support Group', url='https://t.me/VKP_BOTS')]
                 ]
             )
 
 
 @StreamBot.on_message(filters.command('about') & filters.private & ~filters.edited)
 async def about_handler(bot, message):
-    await update.reply_text(
-        chat_id=update.chat.id,
-        text=ABOUT_ME,
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Report Bug 🐞", url="https://t.me/VkP_BOTS")]]),
-        parse_mode="html",
-        disable_web_page_preview=True,
-        reply_to_message_id=update.message_id
-    )
-
-    ABOUT_ME = """ <b>Creator:</b> <a href="https://t.me/VivekTVP">Vivek</a>
+    if not await db.is_user_exist(message.from_user.id):
+        await db.add_user(message.from_user.id)
+        await bot.send_message(
+            Var.BIN_CHANNEL,
+            f"#NEW_USER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) Started !!"
+        )
+    if Var.UPDATES_CHANNEL is not None:
+        try:
+            user = await bot.get_chat_member(Var.UPDATES_CHANNEL, message.chat.id)
+            if user.status == "kicked":
+                await bot.send_message(
+                    chat_id=message.chat.id,
+                    text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/vkp_bots).",
+                    parse_mode="markdown",
+                    disable_web_page_preview=True
+                )
+                return
+        except UserNotParticipant:
+            await bot.send_message(
+                chat_id=message.chat.id,
+                text="**Please Join My Updates Channel to use this Bot!**\n\nDue to Overload, Only Channel Subscribers can use the Bot!",
+                reply_markup=InlineKeyboardMarkup(
+                    [
+                        [
+                            InlineKeyboardButton("🤖 Join Updates Channel", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
+                        ]
+                    ]
+                ),
+                parse_mode="markdown"
+            )
+            return
+        except Exception:
+            await bot.send_message(
+                chat_id=message.chat.id,
+                text="Something went Wrong. Contact my [Support Group](https://t.me/vkp_bots).",
+                parse_mode="markdown",
+                disable_web_page_preview=True)
+            return
+    await message.reply_text(
+        text="<b>Creator:</b> <a href="https://t.me/VivekTVP">Vivek</a>
 <b>Credits:</b> Dan for his awesome pyrogram library 🔥
 <b>Library:</b> <a href="https://docs.pyrogram.org/">Pyrogram 1.1.13</a>
 <b>Updates:</b> <a href="https://t.me/VkProjects">vk projects</a>
 <b>Server:</b> <a href="https://heroku.com">Heroku</a>
 
-<b><u>NB:</u></b> EveryOne Can Use Me.So Don't Worry🤗"""
+<b><u>NB:</u></b> EveryOne Can Use Me.So Don't Worry🤗",
+        parse_mode="Markdown",
+        disable_web_page_preview=True,
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Report Bug 🐞", url="https://t.me/VkP_BOTS")]]),
