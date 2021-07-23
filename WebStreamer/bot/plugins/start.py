@@ -180,7 +180,7 @@ async def help_handler(bot, message):
 
 
 @StreamBot.on_message(filters.command('about') & filters.private & ~filters.edited)
-async def about(b, m):
+async def about(bot, message):
     bot.send_message(
         chat_id=update.chat.id,
         text=ABOUT_ME,
